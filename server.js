@@ -110,7 +110,7 @@ exports.close = function close() {
   server.close();
 };
 
-exports.startServer = function startServer(useCookie){ server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
+exports.startServer = function startServer(useCookie, port, ip){ server.listen(process.env.PORT || port, process.env.IP ||ip, function(){
   
    if (useCookie)
    {
