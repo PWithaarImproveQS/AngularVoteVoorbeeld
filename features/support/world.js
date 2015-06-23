@@ -1,5 +1,6 @@
 var io = require('socket.io/node_modules/socket.io-client');
 var port = 8080;
+var ip = '0.0.0.0';
 var voteServer = require('../../server.js');
 
 function World(callback) {
@@ -13,7 +14,7 @@ function World(callback) {
     
     this.startServer = function(callback)
     {
-      voteServer.startServer(false);
+      voteServer.startServer(false,port,ip );
     };
     
     this.stopServer = function(callback)
@@ -22,7 +23,7 @@ function World(callback) {
     };
     
     this.connect = function (port, callback) {
-       var socket = io.connect('http://0.0.0.0:' + port);
+       var socket = io.connect('http://' + ip + ':' + port);
        return socket;
     };
     
