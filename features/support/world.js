@@ -8,7 +8,7 @@ function World(callback) {
       var oldLog = console.log;
       console.log = function (message) {
         
-          oldLog.apply(console, arguments);
+          //oldLog.apply(console, arguments);
       };
     })();
     
