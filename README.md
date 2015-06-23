@@ -3,6 +3,7 @@
 Testnet Summerschool 2015 Example
 
 Get and install node.js : https://nodejs.org/
+
 Get and install Git
 
 Clone the Git repository by cloning it:
