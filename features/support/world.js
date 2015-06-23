@@ -1,6 +1,6 @@
 var io = require('socket.io/node_modules/socket.io-client');
 var port = 8080;
-var ip = '0.0.0.0';
+var ip = '127.0.0.1';
 var voteServer = require('../../server.js');
 
 function World(callback) {
@@ -8,7 +8,7 @@ function World(callback) {
       var oldLog = console.log;
       console.log = function (message) {
         
-          //oldLog.apply(console, arguments);
+          oldLog.apply(console, arguments);
       };
     })();
     
