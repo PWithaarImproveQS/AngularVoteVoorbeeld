@@ -3,8 +3,7 @@
 Testnet Summerschool 2015 Example
 
 Get and install node.js : https://nodejs.org/
-Get and install https://git-scm.com/
-
+Get and install Git
 
 Clone the Git repository by cloning it:
 git clone https://github.com/PWithaarImproveQS/TestnetSummerSchool2015Example.git
