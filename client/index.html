@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" >
+  <head>
+    <title>Testnet Voting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <style>
+      body {
+        padding-top: 60px;
+      }
+      .chart div {
+        font: 10px sans-serif;
+        background-color: steelblue;
+        text-align: right;
+        padding: 3px;
+        margin: 1px;
+        color: white;
+      }
+    </style>
+   
+  </head>
+    <body>
+
+    <div class="container" ng-app ng-controller="VotingController">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th class="span1"></th>
+          <th class="span6">Description</th>
+          <th class="span1">Votes</th>
+          <th class="span9"></th>
+        </tr>
+        <tr ng-repeat="option in options">
+          <td class="span">
+            <form ng-submit="vote(option)">
+              <button class="btn btn-primary span1" type="submit" ng-disabled="voted" value="Vote">Vote</button>
+            </form>
+          </td>
+          <td class="span6" ng-bind="option.name"></td>
+          <td class="span1" ng-bind="option.numberOfVotes"></td>
+          <td class="span9">
+            <div class="chart">
+                <div ng-model="voteBar" ng-style="{ 'width': option.percentage + '%' }">{{option.percentage.toFixed(0)}}%</div>
+            </<div>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row controls">
+      <form ng-submit="sendItem()">
+        <div class="input-append span8">
+          <input type="text" class="span6" ng-model="inputText" placeholder="Votable Item description">
+          <input type="submit" class="span1 btn btn-primary" value="Send" ng-disabled="!inputText">
+        </div>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/vote.controller.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    
+  </body>
+</html>
