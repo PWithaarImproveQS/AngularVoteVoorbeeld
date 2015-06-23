@@ -19,7 +19,7 @@ var sockets = [];
       done();
   });
       
-  this.Given(/^a connection to the server$/, function (arg1, arg2, arg3, arg4, done) {
+  this.Given(/^a connection to the server$/, function (done) {
     // Write code here that turns the phrase above into concrete actions
   
    sockets.push(this.connect(8080, done));
