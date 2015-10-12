@@ -22,6 +22,7 @@ Run in the repository directory (shell for linux, cmd promt for windows) :
 `npm install -g cucumber`
 
 Test the app with :
+
 `node app.js`
 
 Test cucumber with 
