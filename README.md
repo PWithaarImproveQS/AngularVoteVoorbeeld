@@ -5,8 +5,11 @@ Angular Vote with Cucumber Example
 * Get and install node.js : https://nodejs.org/
 * Get and install Git : http://git-scm.com/
 
-Clone the Git repository by cloning it:
-git clone https://github.com/PWithaarImproveQS/AngularVoteVoorbeeld.git
+* Open a shell for linux or a command `cmd` promt for windows
+
+Clone the Git repository by cloning it with the following command:
+
+`git clone https://github.com/PWithaarImproveQS/AngularVoteVoorbeeld.git`
 
 ## C9 alternative
 * Create an account at https://c9.io/
@@ -15,7 +18,7 @@ git clone https://github.com/PWithaarImproveQS/AngularVoteVoorbeeld.git
 * set the Clone from Git url to https://github.com/PWithaarImproveQS/AngularVoteVoorbeeld.git
 
 ## Setting up the workspace
-Run in the repository directory (shell for linux, cmd promt for windows) :
+Run in the repository directory :
 
 `npm install`
 
