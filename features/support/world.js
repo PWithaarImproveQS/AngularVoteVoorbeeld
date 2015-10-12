@@ -7,20 +7,22 @@ function World(callback) {
     (function(){
         // comment unterneath out to get logging
         
-      console.log = function (message) {
-          
-      };
+      console.log = function (message) {  };
       
     })();
     
     this.startServer = function(callback)
     {
-      voteServer.startServer(false,port,ip,callback);
+      voteServer.startServer(false,port,ip,done);
     };
+    
+    function done() {
+        console.log("Done");
+    }
     
     this.stopServer = function(callback)
     {
-        voteServer.closeServer(callback);
+        voteServer.closeServer(done);
         
     };
     
@@ -28,6 +30,7 @@ function World(callback) {
     {
         voteServer.resetServer(callback);
     };
+    
     callback(); // tell Cucumber we're finished and to use 'this' as the world instance
 }
 

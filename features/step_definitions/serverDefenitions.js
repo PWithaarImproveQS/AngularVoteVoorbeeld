@@ -9,11 +9,11 @@ var linearVoteOption = require('../../lib/linearVote.js');
   this.World = require("../support/world.js").World;
   
   
-  this.Before(function(done) {
+  this.Before( function(done) {
       this.startServer(done);
   });
   
-  this.After(function(done) {
+  this.After( function(done) {
       client.emit('disconnect');
       client.close();
       
