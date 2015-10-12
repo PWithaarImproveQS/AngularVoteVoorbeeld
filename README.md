@@ -1,7 +1,6 @@
 # Angular Vote with Cucumber Example
 
-Angular Vote with Cucumber Example
-
+## Local (offline) installation 
 * Get and install node.js : https://nodejs.org/
 * Get and install Git : http://git-scm.com/
 
@@ -11,7 +10,7 @@ Clone the Git repository by cloning it with the following command:
 
 `git clone https://github.com/PWithaarImproveQS/AngularVoteVoorbeeld.git`
 
-## C9 alternative
+## C9 cloud installation alternative
 * Create an account at https://c9.io/
 * Create a new Workspace
 * Set the project type to NodeJS
