@@ -57,14 +57,31 @@ io.on('connection', function (socket) {
       console.log('we got a vote: ' + option.name + " from " + sessionID);
     
       if (!hasVoted(socket, sessionID)) {
-        console.log("Acutal vote");
         giveVoteOnName(option.name);
         votedSockets.push(sessionID);
         hasVoted(socket,sessionID);
       } else
       {
         console.log("Vote Rejected");
+        socket.emit('rejected', option);
       }
+    });
+    
+    socket.on('reset', function() {
+      console.log("reset data");
+      options = [];
+      votedSockets = [];
+      broadcast('refresh', options);
+      broadcastHasVotes();
+    });
+    
+    socket.on('resetvotes', function() {
+      console.log("reset votes");
+      resetVotes();
+      votedSockets = [];
+      
+      broadcast('refresh', options);
+      broadcastHasVotes();
     });
  
 });
@@ -81,7 +98,16 @@ function hasVoted(socket, sessionID) {
   return false;
 }
   
+  
+function resetVotes() {
+  console.log("Reset all the votes");
+  for (var i = 0; i < options.length; i++) {
+         options[i].reset();
+  }
+}
+
 function giveVoteOnName(name) {
+  console.log("Got a vote on " + name);
   for (var i = 0; i < options.length; i++) {
        if (name == options[i].name)
        {
@@ -89,7 +115,7 @@ function giveVoteOnName(name) {
          broadcast('votedFor', options[i]);
          broadcastHasVotes();
        }
-    }
+  }
 }
 
 function broadcastHasVotes() {
@@ -106,11 +132,19 @@ function broadcast(event, data) {
 
 
 
-exports.close = function close() {
-  server.close();
+exports.closeServer = function closeServer(done) {
+    server.close(done);
 };
 
-exports.startServer = function startServer(useCookie, port, ip){ server.listen(process.env.PORT || port, process.env.IP ||ip, function(){
+exports.resetServer = function resetServer(done) {
+  options = [];
+  votedSockets = [];
+};
+
+exports.startServer = function startServer(useCookie, port, ip, callback)
+{ 
+  server.listen(process.env.PORT || port, process.env.IP ||ip, function()
+  {
   
    if (useCookie)
    {
@@ -134,9 +168,8 @@ exports.startServer = function startServer(useCookie, port, ip){ server.listen(p
       accept(null, true);
     });
    }
-  
-  
+
   var addr = server.address();
   console.log("Server listening at", addr.address + ":" + addr.port);
- 
+  callback();
 })};

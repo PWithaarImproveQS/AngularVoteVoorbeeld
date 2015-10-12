@@ -1,38 +1,33 @@
-var io = require('socket.io/node_modules/socket.io-client');
-var port = 8080;
-var ip = '127.0.0.1';
-var voteServer = require('../../server.js');
 
 function World(callback) {
+    var voteServer = require('../../server.js');
+    var port = 8080;
+    var ip = '127.0.0.1';
+    
     (function(){
-      var oldLog = console.log;
-      console.log = function (message) {
+        // comment unterneath out to get logging
         
-          //oldLog.apply(console, arguments);
+      console.log = function (message) {
+          
       };
+      
     })();
     
     this.startServer = function(callback)
     {
-      voteServer.startServer(false,port,ip );
+      voteServer.startServer(false,port,ip,callback);
     };
     
     this.stopServer = function(callback)
     {
-       voteServer.close(callback);
+        voteServer.closeServer(callback);
+        
     };
     
-    this.connect = function (port, callback) {
-       var socket = io.connect('http://' + ip + ':' + port);
-       return socket;
+    this.resetServer = function(callback)
+    {
+        voteServer.resetServer(callback);
     };
-    
-    this.disconnect = function (socket, callback) {
-       socket.close();
-    };
-    
-   
-    
     callback(); // tell Cucumber we're finished and to use 'this' as the world instance
 }
 

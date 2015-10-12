@@ -42,6 +42,14 @@
       }
     };
     
+    $scope.reset = function reset() {
+      socket.emit('reset');
+    };
+    
+    $scope.resetVote = function resetVote() {
+      socket.emit('resetvotes');
+    }
+
     socket.on('connect', function() {
         socket.emit('getoptions');
     });
